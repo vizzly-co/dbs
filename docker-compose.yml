@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+  customer_postgres_14_2:
+    image: postgres:14.2
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: customer
+      POSTGRES_USER: customer
+    ports:
+      - 7400:5432
+    volumes:
+      - ./inits/postgres_14_2/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  customer_mysql_db_5_7_38:
+    image: mysql:5.7.38
+    restart: always
+    ports:
+      - 7405:3306
+    volumes:
+      - ./inits/mysql_db_5_7_38/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_DATABASE: my_database
+      MYSQL_ROOT_PASSWORD: customer
+      MYSQL_PASSWORD: customer
+      MYSQL_USER: customer
