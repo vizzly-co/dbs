@@ -11,6 +11,7 @@ services:
       - 7400:5432
     volumes:
       - ./inits/postgres_14_2/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./datasets:/var/lib/postgresql/csvs
 
   customer_mysql_db_5_7_38:
     image: mysql:5.7.38

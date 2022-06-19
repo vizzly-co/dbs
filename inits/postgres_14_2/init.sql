@@ -2,6 +2,18 @@ CREATE DATABASE my_database;
 
 \c my_database;
 
+CREATE TABLE stocks (
+    date date,
+    open float,
+    high float,
+    low float,
+    close float,
+    volume float,
+    name varchar(255)
+);
+
+COPY stocks (date,open,high,low,close,volume,name) FROM '/var/lib/postgresql/csvs/all_stocks_5yr.csv' DELIMITER ',' CSV HEADER;
+
 CREATE TABLE cities (
     id int,
     city varchar(255),
