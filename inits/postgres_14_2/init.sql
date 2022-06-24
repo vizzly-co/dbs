@@ -14,6 +14,30 @@ CREATE TABLE stocks (
 
 COPY stocks (date,open,high,low,close,volume,name) FROM '/var/lib/postgresql/csvs/all_stocks_5yr.csv' DELIMITER ',' CSV HEADER;
 
+CREATE TABLE yc_investments (
+    name varchar(255),
+    transaction_name varchar(255),
+    funding_type varchar(255),
+    money_raised_usd float,
+    announced_on date,
+    funding_stage varchar(255),
+    pre_money_valuation_usd float,
+    description text,
+    categories text,
+    location text,
+    website text,
+    revenue_range varchar(255),
+    total_funding_usd float,
+    funding_status varchar(255),
+    number_of_rounds float,
+    lead_investors varchar(255),
+    investor_names text,
+    number_of_investors float,
+    number_of_partner_investors text
+);
+
+COPY yc_investments (name,transaction_name,funding_type,money_raised_usd,announced_on,funding_stage,pre_money_valuation_usd,description,categories,location,website,revenue_range,total_funding_usd,funding_status,number_of_rounds,lead_investors,investor_names,number_of_investors,number_of_partner_investors) FROM '/var/lib/postgresql/csvs/yc_investments.csv' DELIMITER ',' CSV HEADER;
+
 CREATE TABLE cities (
     id int,
     city varchar(255),
